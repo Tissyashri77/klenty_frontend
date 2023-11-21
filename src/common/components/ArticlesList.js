@@ -7,7 +7,7 @@ function ArticlesList({articles}) {
     <Box sx={{display:"flex", flexDirection:{xs: "column", md:"row"}, flexWrap:"wrap", gap:3}}>
         {
             articles.map((article,index) => (
-                <ArticleCard article={article} key={index}/>
+                article.title !== "[Removed]" && <ArticleCard article={article} key={index}/>
             ))
         }
     </Box>
