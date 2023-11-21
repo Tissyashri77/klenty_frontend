@@ -5,42 +5,49 @@ import PsychologyIcon from "@mui/icons-material/Psychology";
 import SyncAltIcon from "@mui/icons-material/SyncAlt";
 import SportsBasketballIcon from "@mui/icons-material/SportsBasketball";
 import HomeIcon from '@mui/icons-material/Home';
+import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 
 const navdetails = [
+  
   {
     title: "Home",
     icon: <HomeIcon />,
     link: "/",
   },
   {
+    title: "Search",
+    icon: <ManageSearchIcon />,
+    link: "/news/search",
+  },
+  {
     title: "Business",
     icon: <BusinessIcon />,
-    link: "/business",
+    link: "/category/business",
   },
   {
     title: "Entertainment",
     icon: <AttractionsIcon />,
-    link: "/entertainment",
+    link: "/category/entertainment",
   },
   {
     title: "Health",
     icon: <HealthAndSafetyIcon />,
-    link: "/health",
+    link: "/category/health",
   },
   {
     title: "Science",
     icon: <PsychologyIcon />,
-    link: "/science",
+    link: "/category/science",
   },
   {
     title: "Sports",
     icon: <SportsBasketballIcon />,
-    link: "/sports",
+    link: "/category/sports",
   },
   {
     title: "Technology",
     icon: <SyncAltIcon />,
-    link: "/technology",
+    link: "/category/technology",
   },
 ];
 

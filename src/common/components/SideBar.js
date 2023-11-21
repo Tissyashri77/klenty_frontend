@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AppBar,
   Box,
@@ -10,18 +10,21 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  TextField,
   Toolbar,
   Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { navdetails } from "../utils/nav";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-export const drawerWidth = 220;
+export const drawerWidth = 250;
 
 function SideBar({ children, window }) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const navigate = useNavigate();
+
+  const location = useLocation();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -32,14 +35,14 @@ function SideBar({ children, window }) {
 
   const drawer = (
     <div>
-      <Toolbar>
+      <Toolbar sx={{cursor:"pointer"}} onClick={() => {navigate('/')}}>
         <Typography fontWeight="500" fontSize={18} color="#363062">
           Categories 🗞️
         </Typography>
       </Toolbar>
       <Divider />
 
-      <List sx={{marginTop:"20px"}}>
+      <List sx={{ marginTop: "20px" }}>
         {navdetails.map((item, index) => (
           <ListItem key={index}>
             <ListItemButton
@@ -48,7 +51,7 @@ function SideBar({ children, window }) {
               }}
             >
               <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText primary={item.title} />
+              <ListItemText primary={item.title} sx={{textDecoration:location.pathname === item.link && "underline"}}/>
             </ListItemButton>
           </ListItem>
         ))}
@@ -77,9 +80,11 @@ function SideBar({ children, window }) {
             <MenuIcon />
           </IconButton>
 
-          <Typography variant="h5" noWrap component="div" fontWeight="600">
-            News Aggregator
-          </Typography>
+          <Box>
+            <Typography variant="h5" noWrap component="div" fontWeight="600">
+              News Aggregator
+            </Typography>
+          </Box>
         </Toolbar>
       </AppBar>
 
@@ -124,7 +129,11 @@ function SideBar({ children, window }) {
 
       <Box
         component="main"
-        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+        sx={{
+          flexGrow: 1,
+          p: 3,
+          width: { sm: `calc(100% - ${drawerWidth}px)` },
+        }}
       >
         <Toolbar />
         {children}

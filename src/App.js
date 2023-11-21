@@ -7,6 +7,7 @@ import {
 import Home from "./pages/Home";
 import Category from "./pages/Category";
 import { getTopHeadlines } from "./common/utils/apicall";
+import SearchNews from "./pages/SearchNews";
 
 
 const router = createBrowserRouter([
@@ -17,9 +18,15 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/:category",
+    path: "/category/:category",
     element:(
       <Category/>
+    )
+  },
+  {
+    path: "/news/search",
+    element:(
+      <SearchNews/>
     )
   }
 ]);

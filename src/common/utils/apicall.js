@@ -25,4 +25,20 @@ const getNewsCategorywise = async(category) => {
       }
 }
 
-export {getTopHeadlines, getNewsCategorywise}
+const getNewsBySearch = async(search) => {
+  console.log(search);
+  if(search)
+  {
+    try {
+      const response = await axios.get(
+        `https://newsapi.org/v2/everything?q=${search}&sortBy=popularity&apiKey=${process.env.REACT_APP_API_KEY}&pageSize=100&language=en`
+      );
+      return response.data.articles;
+    } catch (error) {
+      console.error("Error fetching top headlines:", error);
+      throw error;
+    }
+  }
+}
+
+export {getTopHeadlines, getNewsCategorywise, getNewsBySearch}

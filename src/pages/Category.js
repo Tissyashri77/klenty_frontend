@@ -49,7 +49,7 @@ function Category() {
         <Box sx={{display:"flex", flexDirection:"column", gap:3}}>
           <Typography sx={{textTransform:"capitalize", fontSize:20, fontWeight:"700", textDecoration:"underline"}}>{params.category} News</Typography>
           {loading ? <Loading/> : 
-            news.map((newsItem, index) => (
+            news && news.map((newsItem, index) => (
               <NewsCard news={newsItem} key={index} />
             ))
           }
